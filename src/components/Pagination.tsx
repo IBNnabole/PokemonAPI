@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './PangCss.css'
 
 interface PaginationProps {
     currentPage: number;
@@ -7,14 +8,14 @@ interface PaginationProps {
 
 const Pagination: React.FC<PaginationProps> = ({ currentPage }) => {
     return (
-        <div>
+        <div className="pagination">
             {currentPage > 1 ? (
-                <Link to={`/?page=${currentPage - 1}`}>Previous</Link>
+                <Link to={`/?page=${currentPage - 1}`} className="pagination-link">Previous</Link>
             ) : (
-                <span style={{ pointerEvents: 'none', color: 'grey' }}>Previous</span>
+                <span className="pagination-disabled">Previous</span>
             )}
             <span> Page {currentPage} </span>
-            <Link to={`/?page=${currentPage + 1}`}>Next</Link>
+            <Link to={`/?page=${currentPage + 1}`} className="pagination-link">Next</Link>
         </div>
     );
 };
